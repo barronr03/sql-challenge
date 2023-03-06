@@ -35,29 +35,20 @@ CREATE TABLE departments (
 SELECT * FROM departments
 
 CREATE TABLE dept_emp (
-	id SERIAL PRIMARY KEY,
 	emp_no INT NOT NULL,
     dept_no	varchar NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
-	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
-);
-
-CREATE TABLE dept_emp (
-	id SERIAL PRIMARY KEY,
-	emp_no INT NOT NULL,
-    dept_no	varchar NOT NULL,
-	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
-	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
+	FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
+	PRIMARY KEY (emp_no, dept_no)
 );
 
 SELECT * FROM dept_emp
 
 CREATE TABLE dept_manager (
-	manager_id SERIAL PRIMARY KEY,
 	dept_no	varchar NOT NULL,
-	emp_no INT NOT NULL
+	emp_no INT NOT NULL,
+	PRIMARY KEY (dept_no, emp_no)
 );
 
 
 SELECT * FROM dept_manager
-
